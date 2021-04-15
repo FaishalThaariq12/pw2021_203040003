@@ -1,47 +1,52 @@
 <?php
-if (!isset($_GET['id'])) {
-    header("location: ../index.php");
-    exit;
-}
+    if (!isset($_GET['id'])) {
+        header("location: ../index.php");
+        exit;
+    }
 
-require 'functions.php';
+    require 'functions.php';
 
-// mengambil id dari url 
-$id = $_GET['id'];
+    $id = $_GET['id'];
 
-//melakukan query dengan parameter id yang diambil dari url
-$prakpw_tubes_203040003 = query("SELECT * FROM prakpw_tubes_203040003 WHERE id = $id")[0];
-
+    $novel = query("SELECT * FROM novel WHERE id = $id")[0];
 ?>
 
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
-        <!-- css style -->
-        <link rel="stylesheet" href="../css/style2.css">
-        <title>Buku Kehidupan</title>
-    </head>
-<body>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-    <div class="container">
-    <div class="gambar">
-			<img src="../assets/img/<?= $prakpw_tubes_203040003["gambar"]; ?>" alt="">
-		</div>
-		<div class="keterangan">
-			<p><?= $prakpw_tubes_203040003["judul"]; ?></p>
-			<p><?= $prakpw_tubes_203040003["pengarang"]; ?></p>
-            <p><?= $prakpw_tubes_203040003["sinopsis"]; ?></p>
-			<p><?= $prakpw_tubes_203040003["harga"]; ?></p>
-			<p><?= $prakpw_tubes_203040003["kategori"]; ?></p>
-		</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="../pw2021_203040008/latihan4b/css/style.css">
+    <style>
+    .table {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        img {
+            max-width: 150px;
+        }
+    </style>
 
-		<button class="tombol-kembali"><a href="../index.php">Kembali</a></button>
+    <title>Buku kehidupan</title>
+</head>
+<body>
+        
+    
+    <div class="container">
+       <div class="gambar">
+            <img src="../assets/img/<?= $novel["gambar"]; ?>" alt="">
+       </div>
+       <div class="keterangan">
+           <p class="table-primary"><?= $novel["judul"]; ?></p>
+           <p class="table-primary"><?= $novel["pengarang"]; ?></p>
+           <p class="table-primary"><?= $novel["harga"]; ?></p>
+           <p class="table-primary"><?= $novel["kategori"]; ?></p>
+           <p class="table-primary"><?= $novel["sinopsis"]; ?></p>
+       </div>
+
+       <button class="tombol-kembali"><a href="../index.php">Kembali</a></button>
     </div>
 </body>
-</table>
+</html>
