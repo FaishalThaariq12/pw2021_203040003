@@ -1,22 +1,20 @@
 <?php
-// Koneksi Database 
-function koneksi(){
-    $koneksi = mysqli_connect("localhost", "root","");
-    mysqli_select_db($koneksi, "prakpw_tubes_203040003");
+function koneksi()
+{
+    $conn = mysqli_connect("localhost", "root", "");
+    mysqli_select_db($conn, "prakpw_tubes_203040003");
 
-    return $koneksi;
-
+    return $conn;
 }
 
-// fungsi query
-function query($sql){
-    $koneksi = koneksi();
-    $result = mysqli_query($koneksi, "$sql");
-
-    $rows=[];
-    while ($row = mysqli_fetch_assoc($result)){
-        $rows[]=$row;
+function query($sql) 
+{
+    $conn = koneksi();
+    $result = mysqli_query($conn, "$sql");
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
     }
     return $rows;
-
 }
+?>
