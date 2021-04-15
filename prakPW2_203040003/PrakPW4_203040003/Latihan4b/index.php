@@ -13,7 +13,7 @@
 require 'php/functions.php';
 
 //melakukan query biasa ke table hijab
-$bundle = query("SELECT * FROM novel");
+$novel = query("SELECT * FROM novel");
 ?>
 
 <head>
@@ -49,16 +49,15 @@ $bundle = query("SELECT * FROM novel");
         </thead>
         <tbody>
         <?php $i = 1;
-            foreach ($novel as $novel) :
-            ?>
+            foreach ($novel as $nv) : ?>
                 <tr>
-            <td><?= $i; ?></td>
-            <td><?= $row["judul"]; ?></td>
-            <td><img src="assets/img/<?= $row["gambar"];?> "></td>
-            <td><?= $row["pengarang"]; ?></td>
-            <td><?= $row["sinopsis"]; ?></td>
-            <td><?= $row["harga"]; ?></td>
-            <td><?= $row["kategori"];?> </td>
+                <td class="table-succes"><?= $i; ?></td>
+                <td class="table-primary"><?= $nv["judul"]; ?></td>
+                <td><img src="assets/img/<?= $nv["gambar"]; ?>"></td>  
+                <td><?= $nv["pengarang"]; ?></td>
+                <td class="table-primary"><?= $nv["sinopsis"]; ?></td>
+                <td class="table-primary"><?= $nv["harga"]; ?></td>
+                 <td id="type"><span><?= $nv["kategori"]; ?></span></td>
         </tr>
         <?php $i++ ?>
         <?php endforeach; ?>
